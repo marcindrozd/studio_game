@@ -36,4 +36,28 @@ describe Player do
     @player.health.should == @initial_health - 10
   end
 
+  context "player with initial health of 150" do
+    before do
+      $stdout = StringIO.new # makes sure that puts results are not printed to the console
+      @initial_health = 150
+      @player = Player.new("larry", @initial_health)
+    end
+
+    it "is a strong player" do
+      @player.should be_strong
+    end
+  end
+
+  context "player with initial health of 100" do
+    before do
+      $stdout = StringIO.new # makes sure that puts results are not printed to the console
+      @initial_health = 100
+      @player = Player.new("larry", @initial_health)
+    end
+
+    it "is a wimpy player" do
+      @player.should_not be_strong
+    end
+  end
+
 end
