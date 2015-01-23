@@ -16,7 +16,7 @@ class Player
   end
 
   def strong?
-    true if @health >= 150
+    true if @health >= 120
   end
 
   def blam
@@ -27,6 +27,10 @@ class Player
   def w00t
     @health += 15
     puts "#{@name} got w00ted!"
+  end
+
+  def <=>(other_player)
+    other_player.score <=> score
   end
 end
 
