@@ -19,10 +19,20 @@ class Game
     puts "#{player.name} (#{player.health})"
   end
 
+  def total_points
+    @players.inject(0) {|sum, player| sum + player.points}
+  end
+
   def print_stats
     strong_players, wimpy_players = @players.partition { |p| p.strong? }
 
     puts "\nStatistics:"
+
+    @players.each do |player|
+      puts "#{player.name} point totals:"
+      puts "#{player.points} grand total points"
+      puts
+    end
 
     puts "#{strong_players.size} strong players:"
     strong_players.each do |player|
